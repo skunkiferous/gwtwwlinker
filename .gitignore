@@ -18,3 +18,9 @@ war/WEB-INF/classes/
 /code/war/WEB-INF/deploy
 /code/war/sampleworker
 /code/war/webapp
+
+# maven output
+target/
+
+# OS X generated files
+.DS_Store
