@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1399147229073
+Build-Jdk: 1.7.0_45
+Built-By: monster
+Bundle-Description: Base configuration for my Maven projects.
+Bundle-License: http://opensource.org/licenses/Apache-2.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GWT WebWorker Linker Library
+Bundle-SymbolicName: com.blockwithme.gwt-ww
+Bundle-Vendor: Sebastien Diot
+Bundle-Version: 0.1.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: prj.gwtwwlinker.workerlinker.code;uses:="com.google.gwt.
+ core.ext,com.google.gwt.core.ext.linker";version="0.1.0"
+FuncGenerated012-dependency-version: 1.2.0
+Import-Package: com.google.gwt.core.ext,com.google.gwt.core.ext.linker,c
+ om.google.gwt.dev,com.google.gwt.dev.util
+Tool: Bnd-2.1.0.20130426-122213

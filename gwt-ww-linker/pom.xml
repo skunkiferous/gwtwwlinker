@@ -2,12 +2,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>proj-groupId</groupId>
+        <groupId>com.blockwithme</groupId>
         <artifactId>gwt-ww-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
     <artifactId>gwt-ww</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>GWT WebWorker Linker Library</name>
 
     <dependencies>
@@ -32,20 +32,36 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-            </plugin>
+				<configuration>
+					<module>prj.gwtwwlinker.workerlinker.WorkerLinker</module>
+					<strict>true</strict>
+					<draftCompile>true</draftCompile>
+					<optimizationLevel>0</optimizationLevel>
+					<force>true</force>
+					<failOnError>true</failOnError>
+					<mode>htmlunit</mode>
+					<productionMode>true</productionMode>
+					<enableClosureCompiler>false</enableClosureCompiler>
+				    <systemProperties>
+				      <java.awt.headless>true</java.awt.headless>
+				    </systemProperties>
+				</configuration>
+                </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
         </plugins>
     </build>
 </project>

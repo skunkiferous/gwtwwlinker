@@ -2,14 +2,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>proj-groupId</groupId>
+        <groupId>com.blockwithme</groupId>
         <artifactId>gwt-ww-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
     <artifactId>gwt-ww-example</artifactId>
     <packaging>war</packaging>
     <name>GWT WebWorker Linker Example App</name>
-    
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -17,7 +17,7 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
@@ -46,7 +46,24 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+				<configuration>
+	              <modules>
+					<module>prj.gwtwwlinker.Webapp</module>
+					<module>prj.gwtwwlinker.sampleworker.SampleWorker</module>
+	              </modules>
+					<strict>true</strict>
+					<draftCompile>true</draftCompile>
+					<optimizationLevel>0</optimizationLevel>
+					<force>true</force>
+					<failOnError>true</failOnError>
+					<mode>htmlunit</mode>
+					<productionMode>true</productionMode>
+					<enableClosureCompiler>false</enableClosureCompiler>
+				    <systemProperties>
+				      <java.awt.headless>true</java.awt.headless>
+				    </systemProperties>
+				</configuration>
+                </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
@@ -54,6 +71,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
+
+			<plugin>
+			  <groupId>org.eclipse.jetty</groupId>
+			  <artifactId>jetty-maven-plugin</artifactId>
+			</plugin>
         </plugins>
     </build>
 </project>

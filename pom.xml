@@ -2,115 +2,93 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
+		<groupId>com.blockwithme</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>0.1.0</version>
     </parent>
-    <groupId>proj-groupId</groupId>
+    <groupId>com.blockwithme</groupId>
     <artifactId>gwt-ww-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>pom</packaging>
     <name>GWT WebWorker Linker Project</name>
-    <properties>
-        <java.version>1.6</java.version>
-        <gwt.version>2.6.0</gwt.version>
-        <gwt.plugin.version>2.6.0-rc3</gwt.plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
+	<repositories>
+		<repository>
+			<id>blockwithme-mvn-repo</id>
+			<url>https://raw.github.com/skunkiferous/Maven/master</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle
+			Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+	</repositories>
+
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+			<groupId>org.junit</groupId>
+			<artifactId>com.springsource.org.junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-user</artifactId>
-                <version>${gwt.version}</version>
+                <version>${gwt-dependency-version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-dev</artifactId>
-                <version>${gwt.version}</version>
+                <version>${gwt-dependency-version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-elemental</artifactId>
-                <version>${gwt.version}</version>
+                <version>${gwt-dependency-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>${gwt.plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.google.gwt</groupId>
-                            <artifactId>gwt-user</artifactId>
-                            <version>${gwt.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.google.gwt</groupId>
-                            <artifactId>gwt-dev</artifactId>
-                            <version>${gwt.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
-                <!-- Build and attach javadocs -->
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.1.2</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
-                
+
             </plugins>
         </pluginManagement>
     </build>
+
     <modules>
         <module>gwt-ww-linker</module>
         <module>gwt-ww-linker-demo</module>
     </modules>
-    
+
     <scm>
-        <connection>scm:git:git@github.com:tomekziel/gwtwwlinker.git</connection>
-        <developerConnection>scm:git:git@github.com:tomekziel/gwtwwlinker.git</developerConnection>
-        <url>https://github.com/tomekziel/gwtwwlinker</url>
+        <connection>scm:git:git@github.com:skunkiferous/gwtwwlinker.git</connection>
+        <developerConnection>scm:git:git@github.com:skunkiferous/gwtwwlinker.git</developerConnection>
+        <url>https://github.com/skunkiferous/gwtwwlinker</url>
     </scm>
 </project>
