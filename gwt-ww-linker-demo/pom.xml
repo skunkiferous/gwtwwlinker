@@ -62,6 +62,7 @@
 				    <systemProperties>
 				      <java.awt.headless>true</java.awt.headless>
 				    </systemProperties>
+			  		<style>PRETTY</style>
 				</configuration>
                 </plugin>
             <plugin>

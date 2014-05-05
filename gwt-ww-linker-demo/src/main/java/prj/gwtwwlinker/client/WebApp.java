@@ -1,13 +1,13 @@
 /************************************************************************
  * This is a part of gwtwwlinker project
- * https://github.com/tomekziel/gwtwwlinker 
- * 
+ * https://github.com/tomekziel/gwtwwlinker
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -30,44 +30,45 @@ import elemental.html.Worker;
 
 public class WebApp implements EntryPoint {
 
-	public void onModuleLoad() {
-		final Button startButton = new Button("Send msg to worker");
-		RootPanel.get("container1").add(startButton);
-		
-		final Window window = elemental.client.Browser.getWindow();
-		
+    @Override
+    public void onModuleLoad() {
+        final Button startButton = new Button("Send msg to worker");
+        RootPanel.get("container1").add(startButton);
+
+        final Window window = elemental.client.Browser.getWindow();
+
         // gwtwwlinker - WARNING! This demo doesn't care of multiple permutation and cache issues!
-		// you may need to take care of it yourself! 
-		final Worker worker = window.newWorker("../sampleworker/worker.js");		
-		
-		startButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				worker.postMessage("Hello worker");
-			}
-		});
-		
-		worker.setOnerror(new EventListener() {
-			@Override
-			public void handleEvent(elemental.events.Event evt) {
-				window.alert("Error message form worker: "+evt.toString());
-				
-			}
-		});
-		
-		worker.setOnmessage(new EventListener() {
-			@Override
-			public void handleEvent(elemental.events.Event evt) {
-				if(evt instanceof MessageEvent){
-					MessageEvent event = (MessageEvent)evt;
-					Object obj = event.getData();
-					Label l = new Label("Worker says: "+obj.toString());
-					RootPanel.get("container2").insert(l, 0);
-				}
-			}
+        // you may need to take care of it yourself!
+        final Worker worker = window
+                .newWorker("../sampleworker/sampleworker.nocache.js");
+
+        startButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(final ClickEvent event) {
+                worker.postMessage("Hello worker");
+            }
         });
-		
-	}
+
+        worker.setOnerror(new EventListener() {
+            @Override
+            public void handleEvent(final elemental.events.Event evt) {
+                window.alert("Error message form worker: " + evt.toString());
+
+            }
+        });
+
+        worker.setOnmessage(new EventListener() {
+            @Override
+            public void handleEvent(final elemental.events.Event evt) {
+                if (evt instanceof MessageEvent) {
+                    final MessageEvent event = (MessageEvent) evt;
+                    final Object obj = event.getData();
+                    final Label l = new Label("Worker says: " + obj.toString());
+                    RootPanel.get("container2").insert(l, 0);
+                }
+            }
+        });
+
+    }
 
 }
-
