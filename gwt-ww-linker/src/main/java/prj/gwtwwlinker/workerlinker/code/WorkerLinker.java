@@ -32,9 +32,14 @@ public class WorkerLinker extends D8ScriptLinker {
     protected String generateSelectionScript(final TreeLogger logger,
             final LinkerContext context, final ArtifactSet artifacts)
             throws UnableToCompleteException {
-        // idk what/where load() was defined originally, but in web-workers,
-        // we need to call importScripts().
-        return super.generateSelectionScript(logger, context, artifacts)
-                .replace(";load(", ";importScripts(");
+        String result = super.generateSelectionScript(logger, context,
+                artifacts);
+        final int start = result.indexOf("window.Object");
+        result = "var load = importScripts;\n" //
+                + "window = self;\n" //
+                + "window.document = self;\n" //
+                + "function print(msg) { self.postMessage('LOG:'+msg); };\n" //
+                + result.substring(start);
+        return result;
     }
 }

@@ -3,4 +3,6 @@
 <module>
   <inherits name="com.google.gwt.core.Core" />
   <define-linker name="workerlinker" class="prj.gwtwwlinker.workerlinker.code.WorkerLinker" />
+	<!-- We don't even produce JavaScript code, nor do we have an EntryPoint so no need for permutations -->
+	<set-property name="user.agent" value="gecko1_8" />
 </module>

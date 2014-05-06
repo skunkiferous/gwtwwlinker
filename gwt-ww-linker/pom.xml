@@ -19,10 +19,6 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-elemental</artifactId>
-        </dependency>
     </dependencies>
     <build>
         <resources>
@@ -50,6 +46,7 @@
 				    <systemProperties>
 				      <java.awt.headless>true</java.awt.headless>
 				    </systemProperties>
+				    <style>PRETTY</style>
 				</configuration>
                 </plugin>
             <plugin>

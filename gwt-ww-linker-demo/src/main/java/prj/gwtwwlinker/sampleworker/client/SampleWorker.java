@@ -27,7 +27,7 @@ public final class SampleWorker implements EntryPoint {
 
     private JsDedicatedWorkerGlobalScope worker;
 
-    /** "self" IS the worker, so just cast self to the righ type! */
+    /** "self" IS the worker, so just cast self to the right type! */
     private static native JsDedicatedWorkerGlobalScope selfToWorker() /*-{
                                                                       return self;
                                                                       }-*/;
