@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1399399089929
+Bnd-LastModified: 1399399264626
 Build-Jdk: 1.7.0_45
 Built-By: monster
 Bundle-Description: Base configuration for my Maven projects.
